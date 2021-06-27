@@ -12,6 +12,10 @@ Please install the following in either `/usr/` or `/usr/local/`, the files will 
 - GLFW3
 - GLM
 
+### Operating System
+
+Currently only have support for the Linux OS (tested/built on Ubuntu 20.04)
+
 ---
 
 ## Build & Run Instructions
