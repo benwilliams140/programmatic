@@ -4,20 +4,20 @@ EXE = $(BUILD)/programmatic
 CXX = g++
 CXXFLAGS = -Wall -std=c++2a -g -Iinclude -I/usr/include -I/usr/local/include
 
-LIBS = -lglfw3
-LFLAGS = -L/usr/lib -L/usr/local/lib
+LIBS = -lGL -lGLEW -lGLU -lglfw3 -lX11 -ldl -lpthread
+LDFLAGS = -L/usr/lib -L/usr/local/lib
 
 SRC = $(wildcard src/*.cpp)
 OBJ = $(SRC:src/%.cpp=$(BUILD)/%.o)
 
 .PHONY: all clean
 
-all: $(BUILD) $(EXE)
+all: clean $(BUILD) $(EXE)
 
 $(EXE): $(OBJ)
-	$(CXX) $(LFLAGS) $(LIBS) $^ -o $@
+	$(CXX) $(LDFLAGS) $^ $(LIBS) -o $@
 
-$(BUILD)/%.o: $(SRC)
+$(BUILD)/%.o: src/%.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 $(BUILD):
