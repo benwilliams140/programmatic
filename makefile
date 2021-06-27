@@ -4,7 +4,7 @@ EXE = $(BUILD)/programmatic
 CXX = g++
 CXXFLAGS = -Wall -std=c++2a -g -Iinclude -I/usr/include -I/usr/local/include
 
-LIBS = -lGL -lGLEW -lGLU -lglfw3 -lX11 -ldl -lpthread
+LIBS = -lGL -lGLEW -lGLU -lglfw -lX11 -ldl -lpthread
 LDFLAGS = -L/usr/lib -L/usr/local/lib
 
 SRC = $(wildcard src/*.cpp)
