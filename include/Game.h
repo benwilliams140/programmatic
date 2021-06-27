@@ -7,8 +7,22 @@
 #pragma once
 
 #include "Window.h"
+#include "Camera.h"
 
 #include <GLFW/glfw3.h>
+
+#include <chrono>
+#include <ctime>
+#include <iostream>
+
+// consider making this an option
+#define MAX_FPS 30
+
+typedef enum State {
+    RUNNING,
+    PAUSED,
+    STOPPED
+} State;
 
 class Game {
 public:
@@ -21,7 +35,26 @@ public:
     void start();
 protected:
 private:
-    Window* window_;
+    /*
+    Game Variables
+    */
+    State state_;
 
+    /*
+    Game Objects
+    */
+    Window* window_;
+    Camera* camera_;
+
+    /*
+    Main Functions
+    */
     void gameloop();
+    void update(float dt);
+    void render();
+
+    /*
+    Helper Functions
+    */
+    long getTime();
 };
