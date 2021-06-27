@@ -51,6 +51,14 @@ Window::~Window() {
 }
 
 /*
+@function: swapBuffers
+@desc: swaps the GLFWwindow buffers
+*/
+void Window::swapBuffers() {
+    glfwSwapBuffers(window_);
+}
+
+/*
 @function: isOpen
 @return: bool - is the window open
 */
