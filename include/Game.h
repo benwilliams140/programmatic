@@ -22,4 +22,6 @@ public:
 protected:
 private:
     Window* window_;
+
+    void gameloop();
 };

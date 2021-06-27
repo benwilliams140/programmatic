@@ -22,6 +22,17 @@ Game::~Game() {
 */
 void Game::start() {
     window_ = new Window();
+    gameloop();
+}
+
+/*
+@function: gameloop
+@desc: Main gameloop - controls game state
+*/
+void Game::gameloop() {
+    while(window_->isOpen()) {
+        glfwPollEvents();
+    }
 }
 
 /*

@@ -27,9 +27,15 @@ Window::Window() {
         glfwMakeContextCurrent(window_);
 
         glewExperimental = GL_TRUE;
-        if(~glewInit()) {
-            throw(std::runtime_error("Could not initialize GLEW library"));
+        GLenum err = glewInit();
+        if(err != GLEW_OK) {
+            throw(std::runtime_error(std::string("Could not initialize the GLEW library: ") + std::string((const char*)glewGetErrorString(err))));
         }
+
+        glEnable(GL_DEPTH_TEST);
+		glEnable(GL_CULL_FACE);
+		glCullFace(GL_BACK);
+		glViewport(0, 0, WIDTH, HEIGHT);
     } catch(std::exception& err) {
         std::cerr << err.what() << std::endl;
         exit(-1);
@@ -49,5 +55,5 @@ Window::~Window() {
 @return: bool - is the window open
 */
 bool Window::isOpen() {
-    return false;
+    return !glfwWindowShouldClose(window_);
 }
